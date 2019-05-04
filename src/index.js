@@ -4,9 +4,10 @@ console.clear();
 // -----------------------------------------MAP
 
 // Pályával kapcsolatos cuccok
-const palya = {}; // Azért obj mert igy könnyebben tudom szerkezteni a tulajdonságait a pályának
+const palya = {};
 
-// Lehetne tesztelni akár hogy nagyobb e legalább 3-nál vagy akár randomoltatni is a pálya méretét ( annál kisebben nem nagyon van értelme a játéknak)
+// Lehetne tesztelni akár hogy nagyobb e legalább 3-nál vagy akár randomoltatni is a pálya méretét
+// ( annál kisebben nem nagyon van értelme a játéknak)
 palya.szelesseg = read.questionInt('Milyen széles legyen a pálya? ');
 palya.magassag = read.questionInt('Milyen magas legyen a pálya? ');
 
@@ -20,7 +21,7 @@ palya.terkep[palya.magassag - 1][palya.szelesseg - 1] = 1; // Második játékos
 
 // -----------------------------------------GAME
 
-let jatekVege = false; // ha a palyaEllenorzes True-t add vissza akkor vége a játéknak
+let jatekVege = false; // ha a palyaEllenorzes true -t add vissza akkor vége a játéknak
 let korokSzama = 0; // Ez csak azért van hogy megjelenjen hogy melyik játékos következik
 
 while (!jatekVege) {
@@ -28,11 +29,17 @@ while (!jatekVege) {
 
   // Megjelenítés
   console.clear(); // Kitisztítja a console-t
-  console.log(`${korokSzama % 2 ? 'Az első' : 'A második'} játékos következik!`); // Maradéknélküli osztással megnézi hogy az első vagy a második játékos jön
-  palyaMegjelenites(palya.terkep); // Megjeleníti a térképet
+  
+  // Maradéknélküli osztással megnézi hogy az első vagy a második játékos jön
+  console.log(`${korokSzama % 2 ? 'Az első' : 'A második'} játékos következik!`);
+  
+  // Megjeleníti a térképet
+  palyaMegjelenites(palya.terkep);
 
   let jatekos = {};
-  jatekos.oszlop = korokSzama % 2 ? 0 : palya.szelesseg - 1; // Megnézi hogy melyik játék következik, aszerint helyezi balszélre vagy jobb szélre
+  
+  // Megnézi hogy melyik játék következik, aszerint helyezi balszélre vagy jobb szélre
+  jatekos.oszlop = korokSzama % 2 ? 0 : palya.szelesseg - 1;
   jatekos.sor = palya.magassag - 1;
 
   // Célpont és tűzelés
@@ -45,7 +52,9 @@ while (!jatekVege) {
   while (!tuzelheto) {
     celpont.oszlop = read.questionInt('Oszlop: ');
     celpont.sor = read.questionInt('Sor: ');
-    if ((palya.terkep[celpont.sor][celpont.oszlop] < 2) && celpont.sor < palya.magassag) { // Nem e foglalt és nem a legalja (ágyúsor nem számít bele a játékosmezőbe)
+    
+    // Nem e foglalt és nem a legalja (ágyúsor nem számít bele a játékosmezőbe)
+    if ((palya.terkep[celpont.sor][celpont.oszlop] < 2) && celpont.sor < palya.magassag) {
       tuzelheto = true;
     } else {
       console.log('Ide nem tűzelhetsz, válassz másik helyet! ');
