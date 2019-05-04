@@ -1,0 +1,16 @@
+{
+  "name": "cannons-game",
+  "version": "1.0.0",
+  "description": "Építős és rombolós ágyús játék.",
+  "main": "./src/index.js",
+  "keywords": [
+    "cannons",
+    "players",
+    "random"
+  ],
+  "author": "Béla Kellner (Xentinus)",
+  "license": "MIT",
+  "dependencies": {
+    "readline-sync": "^1.4.9"
+  }
+}
