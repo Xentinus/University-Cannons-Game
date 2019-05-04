@@ -4,7 +4,7 @@ console.clear();
 // -----------------------------------------MAP
 
 // Pályával kapcsolatos cuccok
-const palya = {}; // Azért obj mert igy könnyebben tudom szerezteni a tulajdonságait a pályának
+const palya = {}; // Azért obj mert igy könnyebben tudom szerkezteni a tulajdonságait a pályának
 
 // Lehetne tesztelni akár hogy nagyobb e legalább 3-nál vagy akár randomoltatni is a pálya méretét ( annál kisebben nem nagyon van értelme a játéknak)
 palya.szelesseg = read.questionInt('Milyen széles legyen a pálya? ');
@@ -53,7 +53,7 @@ while (!jatekVege) {
   }
 
   palya.terkep[celpont.sor][celpont.oszlop] = teglaGeneralas(); // Randomgenerál egy téglát a célpont helyén
-  tisztitas(palya, celpont); // Kitísztit körülőtte
+  tisztitas(palya, celpont); // Kitísztít ha van hasonló tégla körülőtte
   jatekVege = palyaEllenorzes(palya.terkep); // Megnézi hogy a játékos mező teljesen űres vagy tele e van
 }
 
@@ -103,9 +103,9 @@ function palyaKeszites(palyaSzelesseg, palyaMagassag) {
   for (let i = 0; i < (palyaMagassag); i++) {
     for (let j = 0; j < palyaSzelesseg; j++) {
       if (i === 0) {
-        sor.push(teglaGeneralas());
+        sor.push(teglaGeneralas()); // Az első sor kezdésnek random téglák
       } else {
-        sor.push(0);
+        sor.push(0); // Minden más üres
       }
     }
     palya.push(sor);
@@ -120,7 +120,7 @@ function palyaMegjelenites(terkep) {
   // Oszlopszám megjelenítése a tetején
   let sor = '     ';
   for (let j = 0; j < terkep[0].length; j++) {
-    sor += ` ${j} `
+    sor += ` ${j} `;
   }
   console.log(sor);
 
@@ -135,7 +135,7 @@ function palyaMegjelenites(terkep) {
   for (let i = 0; i < terkep.length; i++) {
     sor = `${i} |  `; // Sorszám megjelenítése
     for (let j = 0; j < terkep[i].length; j++) {
-      sor += ` ${terkep[i][j]} `
+      sor += ` ${terkep[i][j]} `;
     }
     console.log(sor);
     sor = '';
